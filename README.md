@@ -1,265 +1,89 @@
-# Personal Portfolio Website 🚀
+# Personal Portfolio Website – Assignment 2 (Interactive Features)
 
-> A professional, responsive portfolio website built with vanilla HTML, CSS, and JavaScript. Created as Assignment 1 for Foundation & AI Integration course.
+A responsive personal portfolio built with vanilla HTML, CSS and JavaScript. This version builds on Assignment 1 and adds interactivity: persistent theme preference, inline form validation with animated feedback, and a dynamic content feature.
 
-**Live Demo:** [View Portfolio](https://github.com/hsnMarhoon/202467900-HassanAlmarhoon-assignment1)
-
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Technologies Used](#technologies-used)
-- [How to Run Locally](#how-to-run-locally)
-- [Deployment](#deployment)
-- [AI Integration](#ai-integration)
-- [Browser Support](#browser-support)
-- [Contributing](#contributing)
-- [License](#license)
+**Repository:** https://github.com/hsnMarhoon/202467900-HassanAlmarhoon-assignment2
+**Live demo (optional):** `[add GitHub Pages / Netlify link here, or delete this line]`
 
 ---
+
+## What's New in Assignment 2
+
+| Requirement | What I implemented |
+|---|---|
+| **Dynamic content** | `[DESCRIBE YOUR FEATURE, e.g. "live project search / tag filter that shows 'No projects found' when nothing matches"]` |
+| **Data handling** | Theme preference saved in **localStorage**; falls back to the OS dark/light setting on the first visit; safe if storage is blocked |
+| **Data handling** | Contact **form** with per-field validation and a confirmation message |
+| **Animation / transitions** | Hover effects on buttons, cards, nav links and tags; theme colour transitions; error and success messages fade in |
+| **Error handling / feedback** | Red inline error under each invalid field (no more `alert()`), focus moves to the first invalid field, fields re-validate as the user fixes them, green success message |
+| **AI enhancement** | Claude used for code, debugging and documentation – see [AI usage](#ai-usage) |
 
 ## Features
 
-### **Core Features**
-
-**Responsive Design**
-- Mobile-first approach
-- Works on all devices
-- Touch-friendly interface
-
-**Dark/Light Theme Toggle**
-- Click button to switch themes
-- Theme persists across sessions
-- Smooth transitions
-
-**Professional Sections**
-- About Me with personal introduction
-- showcasing Projects worked for 
-- Contact form with validation
-
-**Interactive Elements**
-- Smooth scrolling navigation
-- Hover effects on cards
-- Form validation with feedback
-
-**Accessibility**
-- Semantic HTML structure
-- Proper color contrast (WCAG)
-
-**Modern Styling**
-- CSS Grid & Flexbox layouts
-- CSS variables for theming
-- Gradient accents and effects
-
----
-
-## Quick Start
-
-### **Prerequisites**
-
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Text editor (VS Code, Sublime, etc.)
-- Git (optional, for version control)
-
-### **Installation**
-
-1. **Clone or Download**
-   ```bash
-   # Clone from GitHub
-   git clone https://github.com/hsnMarhoon/202467900-HassanAlmarhoon-assignment1
-   cd id-name-assignment1
-   
-   # Or download ZIP and extract
-   ```
-
-2. **Open in Browser**
-   ```bash
-   # Simple way - double click index.html
-   # Or use Live Server in VS Code
-   
-   # Or run local server
-   python -m http.server 8000
-   # Visit: http://localhost:8000
-   ```
-
-3. **Done!** Portfolio is now running locally
-
----
+- **Dark / light theme toggle** – remembered across visits, no flash of the wrong theme on load
+- **Contact form validation** – required fields, email format, minimum message length, accessible error messages
+- **Smooth-scrolling navigation** with sticky nav bar
+- **Project cards** with hover lift, tech tags and responsive grid (1 column on mobile, 2 on tablet and up)
+- **Responsive design** for phone, tablet and desktop
 
 ## Project Structure
 
 ```
-portfolio/
-├── index.html                         # Main HTML file
-├── README.md                          # This file
-│
-├── docs/                              # Documentation folder
-│   ├── ai-usage-report.md            # AI tool usage report
-│   └── technical-documentation.md    # Technical details
-│
+id-name-assignment2/
+├── README.md
+├── index.html
 ├── css/
-│   └── styles.css                    # All styling (responsive, dark mode)
-│
+│   └── styles.css
 ├── js/
-│   └── script.js                     # Theme toggle, form validation
-│
-└── assets/
-    └── images/
-        ├── hotel_reservation.jpg           # Project 1 image
-        └── game-assets-reverse-engineering.jpg  # Project 2 image
+│   └── script.js
+├── assets/
+│   └── images/
+│       ├── hotel_reservation.jpg
+│       └── game-assets-reverse-engineering.jpg
+├── docs/
+│   ├── ai-usage-report.md
+│   └── technical-documentation.md
+└── .gitignore
 ```
-
-### **Key Files Explained**
-
-| File | Purpose |
-|------|---------|
-| `index.html` | Structure - Navigation, sections, form |
-| `styles.css` | Styling - Responsive, dark mode, animations |
-| `script.js` | Functionality - Theme toggle, form validation |
-| `docs/ai-usage-report.md` | AI integration documentation |
-| `docs/technical-documentation.md` | Technical specifications |
-
----
-
-## Technologies Used
-
-### **Frontend**
-
-- **HTML** - Semantic markup
-- **CSS** - Responsive layouts, CSS variables, animations
-- **JavaScript** - Interactive features
-- **Bootstrap** - Grid system (minimal usage)
-
-### **Tools**
-
-- **Git** - Version control
-- **GitHub** - Repository hosting
-- **VS Code** - Code editor
-
-### **Deployment**
-
-- **GitHub Pages** - Free hosting
-- **Netlify** - Alternative hosting
-
----
 
 ## How to Run Locally
 
-### **Option 1: Direct File (Easiest)**
+No build step or installation is needed.
 
-1. Download/Clone the repository
-2. Navigate to the folder
-3. Double-click `index.html`
-4. Portfolio opens in your default browser
+1. **Get the code**
+   ```bash
+   git clone https://github.com/hsnMarhoon/202467900-HassanAlmarhoon-assignment2
+   cd 202467900-HassanAlmarhoon-assignment2
+   ```
+2. **Open it** using any one of these:
+   - Double-click `index.html`, or
+   - Use the *Live Server* extension in VS Code (right-click `index.html` → *Open with Live Server*), or
+   - Run a local server: `python -m http.server 8000`, then visit http://localhost:8000
+3. An internet connection is only needed for the Bootstrap 3.4.1 stylesheet loaded from a CDN. The site still works without it, with minor layout differences.
 
-### **Option 2: Live Server (VS Code)**
+## How to Test the Features
 
-1. Install "Live Server" extension in VS Code
-2. Right-click `index.html`
-3. Select "Open with Live Server"
-4. Browser opens with auto-refresh on file changes
+- **Theme:** click the toggle, refresh the page, and the theme should persist. In DevTools → *Application → Local Storage*, the `theme` key changes between `dark` and `light`. Delete the key and refresh to see the OS preference used.
+- **Form:** submit it empty to see three red messages; type `abc` as the email to see the format message; submit valid data to see the green confirmation.
+- **Dynamic feature:** `[add one line describing how to try it]`
 
----
+## Technologies
 
-## AI Integration
+HTML5 · CSS3 (variables, Grid, Flexbox, keyframe animations) · JavaScript (ES6+, Web Storage API) · Bootstrap 3.4.1 (CDN, minimal use)
 
-### **AI Tools Used**
+## AI Usage
 
-This portfolio was developed using **Claude (Anthropic)** for:
-- Code generation and structure
-- CSS styling and responsive design
-- JavaScript functionality
-- Documentation and content refinement
-
-### **How AI Was Used**
-
-**Code Generation** - HTML/CSS/JS boilerplate  
-**Design Assistance** - Typography, spacing, layouts  
-**Problem Solving** - Debugging and optimization  
-**Documentation** - Professional writing and structure  
-
-### **Learning Approach**
-
-- AI generated suggestions, I reviewed and customized
-- All code was tested and verified
-- Modifications reflect personal understanding
-- Transparency about AI usage (see `docs/ai-usage-report.md`)
-
-For detailed AI integration report, see: [`docs/ai-usage-report.md`](docs/ai-usage-report.md)
-
----
-
-## Customization
-
-### **Change Theme Colors**
-
-Edit `css/styles.css` (line ~10):
-
-```css
-:root {
-  --primary-color: #667eea;      /* Change this */
-  --secondary-color: #764ba2;    /* Change this */
-  --text-dark: #2c3e50;          /* Change this */
-}
-```
-
----
-
-## Features Checklist
-
-- [x] Responsive design (mobile, tablet, desktop)
-- [x] About Me section
-- [x] Projects showcase (2+ projects)
-- [x] Contact form with validation
-- [x] Dark/Light theme toggle
-- [x] Smooth scrolling navigation
-- [x] Professional styling
-- [x] Semantic HTML
-- [x] CSS variables for theming
-- [x] localStorage persistence
-- [x] Form validation
-- [x] Accessibility features
-- [x] AI integration documented
-- [x] Technical documentation
-- [x] README with setup instructions
-
----
+I used **Claude (Anthropic)** during this assignment for: improving the theme persistence code (error-safe localStorage, system-preference fallback, no flash on load), building the inline form validation with CSS `::before` error messages, and reviewing my work against the assignment checklist and updating documentation. I reviewed and tested all AI-suggested code, and I can explain how it works. The complete log and declaration are in [`docs/ai-usage-report.md`](docs/ai-usage-report.md). The full conversations are in the AI Evidence ZIP submitted on Blackboard.
 
 ## Documentation
 
-For more detailed information:
+- [Technical Documentation](docs/technical-documentation.md) – architecture, functions, validation rules, accessibility
+- [AI Usage Report](docs/ai-usage-report.md) – usage log and declaration
 
-- **[Technical Documentation](docs/technical-documentation.md)** - Architecture, components, styling system
-- **[AI Usage Report](docs/ai-usage-report.md)** - How AI tools were used responsibly
-- **[Commit History](https://github.com/hsnMarhoon/202467900-HassanAlmarhoon-assignment1)** - Development progress
+## Browser Support
 
----
-
-### **Optimizations**
-
-Mobile-first CSS  
-Minimal JavaScript  
-Compressed images  
-CSS variables reduce duplication  
-No external dependencies (except Bootstrap)  
+Tested in: `[list the browsers you actually tested, e.g. Chrome, Firefox, phone-width view]`. Uses features supported in current versions of Chrome, Firefox, Safari and Edge (CSS variables, Grid, `localStorage`, `matchMedia`).
 
 ---
 
-## Security
-
-No sensitive data stored  
-Client-side form validation only  
-No external API calls  
-No authentication needed  
-Safe for public deployment  
-
-**Note:** Form submission is client-side only. For actual email sending, backend integration needed.
-
----
-
-**Last Updated:** September 2026  
-**Version:** 1.0.0  
-**Status:** Production Ready
+**Last updated:** October 2026 · **Version:** 2.0.0
