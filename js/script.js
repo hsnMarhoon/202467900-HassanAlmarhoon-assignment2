@@ -70,38 +70,74 @@ function setupSmoothScroll() {
 /**
  * Handle contact form submission
  */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FIELD_NAMES = { username: 'a username', email: 'your email address', message: 'a message' };
+
+function setError(input, message) {
+    const group = input.closest('.form-group');
+    const msg = group.querySelector('.error-msg');
+
+    if (message) {
+        msg.dataset.error = message;          // CSS ::before reads this
+        group.classList.add('has-error');
+        input.setAttribute('aria-invalid', 'true');
+    } else {
+        delete msg.dataset.error;
+        group.classList.remove('has-error');
+        input.removeAttribute('aria-invalid');
+    }
+}
+
+function validateField(input) {
+    const value = input.value.trim();
+    let message = '';
+
+    if (!value) {
+        message = `Please enter ${FIELD_NAMES[input.id]}.`;
+    } else if (input.id === 'email' && !EMAIL_REGEX.test(value)) {
+        message = 'That email looks incomplete. Use the format name@example.com.';
+    } else if (input.id === 'message' && value.length < 10) {
+        message = 'Your message is too short. Please write at least 10 characters.';
+    }
+
+    setError(input, message);
+    return !message;
+}
+
 function setupContactForm() {
     const form = document.querySelector('.contact-container');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
+    if (!form) return;
+
+    const fields = form.querySelectorAll('input, textarea');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        // Get form values
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // Basic validation
-        if (!username || !email || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-        
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-        
-        // Success message
-        alert(`Thank you, ${username}! Your message has been sent successfully.`);
-        
-        // Reset form
-        form.reset();
+        status.textContent = '';
+
+        let firstInvalid = null;
+        fields.forEach(field => {
+            if (!validateField(field) && !firstInvalid) firstInvalid = field;
         });
-    }
+
+        if (firstInvalid) {
+            firstInvalid.focus();
+            return;
+        }
+
+        const name = document.getElementById('username').value.trim();
+        status.textContent = `Thank you, ${name}! Your message has been sent. I'll reply soon.`;
+        form.reset();
+    });
+
+    // Once a field shows an error, re-check it as the user fixes it
+    fields.forEach(field => {
+        field.addEventListener('input', () => {
+            if (field.closest('.form-group').classList.contains('has-error')) {
+                validateField(field);
+            }
+        });
+    });
 }
 
 /**

@@ -411,6 +411,46 @@ CONTACT SECTION
     transform: translateY(0);
 }
 
+.contact-container .form-group input,
+.contact-container .form-group textarea {
+    margin-bottom: 0;
+}
+
+.error-msg {
+    display: block;
+}
+
+.error-msg[data-error]::before {
+    content: "⚠ " attr(data-error);
+    display: block;
+    margin-top: 6px;
+    color: #e53935;
+    font-size: 0.9rem;
+    font-weight: 600;
+    animation: errorIn 0.3s ease;
+}
+
+.contact-container .form-group.has-error input,
+.contact-container .form-group.has-error textarea {
+    border-color: #e53935;
+}
+
+@keyframes errorIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-status {
+    margin: 15px 0 0;
+    font-weight: 600;
+    color: #2e9e5b;
+    animation: errorIn 0.3s ease;
+}
+
+body.dark-mode .error-msg[data-error]::before { color: #ff6b6b; }
+body.dark-mode .contact-container .form-group.has-error input,
+body.dark-mode .contact-container .form-group.has-error textarea { border-color: #ff6b6b; }
+
 /*
 ============================================
 DARK MODE SUPPORT
