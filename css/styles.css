@@ -1,0 +1,580 @@
+/*
+============================================
+GLOBAL STYLES & ROOT
+============================================
+*/
+
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --text-dark: #2c3e50;
+    --text-light: #555;
+    --bg-light: #f9f9f9;
+    --border-light: #e0e0e0;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*
+============================================
+THEME TOGGLE BUTTON
+============================================
+*/
+
+#displaytheme {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+#displaytheme:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#displaytheme:active {
+    transform: translateY(0);
+}
+
+/*
+============================================
+NAVIGATION
+============================================
+*/
+
+nav {
+    background: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 40px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 0 10px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/*
+============================================
+ABOUT ME SECTION
+============================================
+*/
+
+#aboutMe {
+    padding: 60px 20px;
+    background-color: var(--white);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#aboutMe h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#aboutMe h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+#aboutMe p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+#aboutMe strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/*
+============================================
+PROJECTS SECTION STYLES
+============================================
+*/
+
+#projects {
+    padding: 60px 20px;
+    background-color: var(--bg-light);
+}
+
+#projects h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.section-intro {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* PROJECT GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* PROJECT CARD */
+.project-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* PROJECT IMAGE */
+.project-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* PROJECT CONTENT */
+.project-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-content h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* PROJECT HIGHLIGHTS (BULLET POINTS) */
+.project-highlights {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.project-highlights li {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.project-highlights li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.project-highlights li strong {
+    color: var(--text-dark);
+}
+
+/* TECH TAGS */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    display: inline-block;
+    background: #e8eaf6;
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #c5cae9;
+    transition: 0.3s ease, color 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/*
+============================================
+CONTACT SECTION
+============================================
+*/
+
+#contact {
+    padding: 60px 20px;
+    background-color: var(--white);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#contact h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+#contact h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+/* CONTACT FORM CONTAINER */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-light);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.contact-container > div {
+    margin-bottom: 25px;
+}
+
+.contact-container > div:last-of-type {
+    margin-bottom: 0;
+}
+
+/* FORM LABELS */
+.contact-container label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* FORM INPUTS */
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background-color: var(--white);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.contact-container input:last-child,
+.contact-container textarea {
+    margin-bottom: 0;
+}
+
+.contact-container input:focus,
+.contact-container textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.contact-container input::placeholder,
+.contact-container textarea::placeholder {
+    color: #999;
+}
+
+/* TEXTAREA SPECIFIC */
+.contact-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* SUBMIT BUTTON */
+.contact-container button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.contact-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+.contact-container button:active {
+    transform: translateY(0);
+}
+
+/*
+============================================
+DARK MODE SUPPORT
+============================================
+*/
+
+body.dark-mode {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --text-dark: #ecf0f1;
+    --text-light: #bdc3c7;
+    --bg-light: #2c2c2c;
+    --border-light: #404040;
+    --white: #1a1a1a;
+}
+
+body.dark-mode {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+body.dark-mode nav {
+    background: #252525;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode nav a {
+    color: var(--text-dark);
+}
+
+body.dark-mode nav a:hover {
+    color: var(--primary-color);
+}
+
+body.dark-mode #aboutMe,
+body.dark-mode #contact {
+    background-color: var(--white);
+}
+
+body.dark-mode #projects {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .project-card {
+    background: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .project-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .tech-tag {
+    background: #3a3a3a;
+    color: #b19cd9;
+    border-color: #5a5a7a;
+}
+
+body.dark-mode .tech-tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+body.dark-mode .contact-container {
+    background: #333;
+}
+
+body.dark-mode .contact-container input,
+body.dark-mode .contact-container textarea {
+    background-color: #404040;
+    border-color: #505050;
+    color: var(--text-dark);
+}
+
+body.dark-mode .contact-container input:focus,
+body.dark-mode .contact-container textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/*
+============================================
+MOBILE OPTIMIZATION
+============================================
+*/
+
+@media (max-width: 768px) {
+    #displaytheme {
+        top: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px 15px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #aboutMe,
+    #contact {
+        padding: 40px 15px;
+    }
+
+    #projects {
+        padding: 40px 15px;
+    }
+
+    #aboutMe h1,
+    #contact h1,
+    #projects h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-highlights li {
+        font-size: 0.9rem;
+    }
+
+    .contact-container {
+        padding: 25px;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+        padding: 10px 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .tech-tag {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+}
+
+/*
+============================================
+RESPONSIVE IMAGE FIX FOR BOOTSTRAP
+============================================
+*/
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+============================================
+GENERAL RESPONSIVE
+============================================
+*/
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

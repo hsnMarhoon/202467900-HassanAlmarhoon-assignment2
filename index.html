@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <button id="displaytheme" onclick="displaytheme()">Change display theme</button>
+        <nav>
+            <a href="#aboutMe">About me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <section id="aboutMe">
+            <h1>About Me:</h1>
+            <p>Hey! I'm a Computer Science student at KFUPM who loves programming and AI development. 
+                I enjoy tackling complex challenges—from designing robust database systems to reverse-engineering game assets. 
+                Always eager to learn and build cool stuff.</p>
+        </section>
+        <section id="projects">
+            <div class="container">
+                <h1>Projects</h1>
+                <p class="section-intro">A selection of work that demonstrates my approach to solving real-world problems through technology.</p>
+                
+                <div class="projects-grid">
+                    
+                    <!-- PROJECT 1: Hotel Management System -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="assets/images/hotel_reservation.jpg" alt="Hotel Management Database System interface showing room bookings and guest details">
+                        </div>
+                        
+                        <div class="project-content">
+                            <h3>Hotel Management Database System</h3>
+                            
+                            <p class="project-description">
+                                Designed and implemented a relational database system to organize complex hotel operations. The system handles interconnected data including guest details, room types, availability, bookings, payments, and services—all in a unified, efficient structure.
+                            </p>
+                            
+                            <ul class="project-highlights">
+                                <li><strong>Core Focus:</strong> Relational design, normalization, and data integrity</li>
+                                <li><strong>Key Features:</strong> Primary & foreign keys, constraints, optimized indexes</li>
+                                <li><strong>Problem Solved:</strong> Eliminated duplicate bookings, inconsistent records, and slow response times</li>
+                                <li><strong>Impact:</strong> Faster room availability queries, accurate reservations, and reliable billing</li>
+                            </ul>
+                            
+                            <p class="project-tech">
+                                <span class="tech-tag">Database Design</span>
+                                <span class="tech-tag">Normalization</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Data Integrity</span>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 2: Game Asset Reverse Engineering -->
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="assets/images/game-assets-reverse-engineering.jpg" alt="Sprite sheets and animation frames from reverse-engineered game assets">
+                        </div>
+                        
+                        <div class="project-content">
+                            <h3>Game Asset Reverse Engineering</h3>
+                            
+                            <p class="project-description">
+                                Reverse-engineered proprietary game assets by analyzing binary file formats and reconstructing visual data. Extracted and optimized sprite sheets, rebuilt individual frames, and recovered animation sets and color palettes from compiled game files.
+                            </p>
+                            
+                            <ul class="project-highlights">
+                                <li><strong>Scope:</strong> Header parsing, file format analysis, data extraction</li>
+                                <li><strong>Achievements:</strong> Optimized sprite sheet reconstruction with frame-by-frame accuracy</li>
+                                <li><strong>Technical Skills:</strong> Binary file handling, animation frame sequencing, color palette recovery</li>
+                                <li><strong>Result:</strong> Successfully extracted complete animation sets and visual assets</li>
+                            </ul>
+                            
+                            <p class="project-tech">
+                                <span class="tech-tag">Reverse Engineering</span>
+                                <span class="tech-tag">Binary Analysis</span>
+                                <span class="tech-tag">Graphics</span>
+                                <span class="tech-tag">Animation</span>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h1>Contact:</h1>
+            <form class="contact-container simple-form">
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email" required>
+                </div>
+
+                <div>
+                    <label for="Msg">Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your comment..." rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <script src="js/script.js"></script>
+    </body>
+</html>
