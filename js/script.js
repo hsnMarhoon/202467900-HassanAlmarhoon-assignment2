@@ -6,36 +6,43 @@
  * Toggle between light and dark theme
  * Stores preference in localStorage
  */
-function displaytheme() {
-    const body = document.body;
-    const button = document.getElementById('displaytheme');
-    
-    // Toggle dark-mode class
-    body.classList.toggle('dark-mode');
-    
-    // Save preference to localStorage
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-        button.textContent = 'Light Mode';
-    } else {
-        localStorage.setItem('theme', 'light');
-        button.textContent = 'Dark Mode';
+const THEME_KEY = 'theme';
+
+function getSavedTheme() {
+    try {
+        return localStorage.getItem(THEME_KEY);
+    } catch (err) {
+        alert('localStorage unavailable:', err);
+        return null;
     }
 }
 
-/**
- * Load saved theme preference on page load
- */
-function loadTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const button = document.getElementById('displaytheme');
-    
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        button.textContent = 'Light Mode';
-    } else {
-        button.textContent = 'Dark Mode';
+function saveTheme(theme) {
+    try {
+        localStorage.setItem(THEME_KEY, theme);
+    } catch (err) {
+        alert('Could not save theme preference:', err);
     }
+}
+
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    const button = document.getElementById('displaytheme');
+    document.body.classList.toggle('dark-mode', isDark);
+    button.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    button.setAttribute('aria-pressed', String(isDark));
+}
+
+function displaytheme() {
+    const next = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+    applyTheme(next);
+    saveTheme(next);
+}
+
+function loadTheme() {
+    const saved = getSavedTheme();
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved || (systemDark ? 'dark' : 'light'));
 }
 
 /**
